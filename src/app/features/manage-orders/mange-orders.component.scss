@@ -1,0 +1,23 @@
+.tab-group {
+    padding-bottom: 10px;
+  }
+  
+  .router-link-active {
+    // background: #f9f8fa 0% 0% no-repeat;
+    color: #1a589b;
+    // background: #1a589b 0% 0% no-repeat padding-box;
+    // color: white;
+    // border-radius: 10px;
+    border-bottom: 2px solid blue;
+  }
+  
+  ::ng-deep mat-tab-nav-bar,
+  .mat-tab-header {
+    border-bottom: none;
+  }
+  
+  ::ng-deep .mat-tab-label,
+  .tab-label {
+    opacity: 5 !important;
+  }
+  
