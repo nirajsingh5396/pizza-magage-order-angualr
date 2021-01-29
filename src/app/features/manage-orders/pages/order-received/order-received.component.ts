@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ManageOrdersService } from '../../manage-orders.service';
 import { IOrders, ORDERSTATUS } from '../../models/orders.model';
@@ -9,24 +9,39 @@ import { IOrders, ORDERSTATUS } from '../../models/orders.model';
   styleUrls: ['./order-received.component.scss']
 })
 export class OrderReceivedComponent implements OnInit {
-  items = [11, 2, 3, 4, 5]
-  orderStatus$: Observable<string[]>;
-  orders$: Observable<IOrders[]>;
+
+  orderStatusBtn: string[] = []
+  orders: IOrders[] = [];
+  @Input() status: string;
 
 
   constructor(private manageOrderService: ManageOrdersService) { }
 
   ngOnInit() {
     this.getAllreceivedOrder();
-    this.getOrderStatus(ORDERSTATUS.RECEIVED);
+    this.getOrderStatus();
   }
 
   getAllreceivedOrder() {
-    this.orders$ = this.manageOrderService.getReceivedOrders();
+    this.manageOrderService.getOrders().subscribe(orders => {
+      this.orders = orders;
+    });
   }
 
-  getOrderStatus(disCardStatus: string) {
-    this.orderStatus$ = this.manageOrderService.getOrderStatus(disCardStatus);
+  getOrderStatus() {
+  this.manageOrderService.getOrderStatus().
+  subscribe((status)=>{this.orderStatusBtn = status})
   }
+
+  changeStatus(order: IOrders) {
+    this.manageOrderService.changeOrderStatus(order).subscribe(
+      (res) => {
+        if (res.status === 'success') {
+          this.getAllreceivedOrder();
+        }
+      }
+    );
+  }
+
 
 }

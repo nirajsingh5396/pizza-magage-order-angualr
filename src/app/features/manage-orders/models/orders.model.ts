@@ -5,7 +5,7 @@ export interface IOrders {
     customerName: string;
     itemName: string;
     noOfItems: number
-    orderStatus: ORDERSTATUS
+    orderStatus: ORDERSTATUS | string
 }
 
 export enum ORDERSTATUS {

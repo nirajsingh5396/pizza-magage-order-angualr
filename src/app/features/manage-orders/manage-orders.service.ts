@@ -32,24 +32,26 @@ export class ManageOrdersService {
   ];
 
   preparingOrders: IOrders[] = [];
+
   constructor() { }
 
-  getOrderStatus(disCardStatus: string): Observable<string[]> {
-    const status = ['Order Received', 'Preparing', 'Ready to serve'];
-    return of(status.filter(x => x !== disCardStatus));
+  getOrderStatus(): Observable<string[]> {
+    const status = ['Preparing', 'Ready to serve'];
+    return of(status);
   }
 
-  getReceivedOrders(): Observable<IOrders[]> {
+
+  getOrders(): Observable<IOrders[]> {
+    console.log(this.orders)
     return of(this.orders)
   }
 
-  getPreparingOrders(orderId: number): Observable<IOrders[]> {
-    const index = this.orders.findIndex((order) => order.id === orderId);
-    if (index < 0) {
-      return of(null)
+  changeOrderStatus(reqOrder: IOrders): Observable<any> {
+    const order = this.orders.find((order) => order.id === reqOrder.id);
+    if (!order) {
+      return of(null);
     }
-    this.preparingOrders.push(this.orders[index]);
-    this.orders.splice(index, 1);
-    return of(this.preparingOrders);
+    order.orderStatus = reqOrder.orderStatus;
+    return of({ status: 'success', message: `Status has been changed to${status}` })
   }
 }

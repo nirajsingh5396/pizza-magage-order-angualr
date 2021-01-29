@@ -1,2 +1,7 @@
-<app-received-item *ngFor="let order of orders$ | async" [order]="order" [orderStatus$]="orderStatus$">
+<app-received-item 
+*ngFor="let order of orders" 
+[order]="order" 
+[orderStatusBtn]="orderStatusBtn"
+(statusChangedEvent)="changeStatus($event)"
+>
 </app-received-item>

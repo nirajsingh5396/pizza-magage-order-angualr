@@ -3,7 +3,6 @@
         <mat-expansion-panel-header>
             <mat-panel-title matTooltip={{order.customerName}}>
                 {{order.customerName | shorten: 5}}
-                <!-- {{'order'}} -->
             </mat-panel-title>
             <mat-panel-description>
                 {{order.noOfItems}} Items
@@ -17,13 +16,11 @@
         </mat-expansion-panel-header>
         <button id="btn-view-details" mat-stroked-button color="primary">View Details</button>
         <br>
-        <mat-form-field appearance="outline">
-            <mat-label>Change Order Status</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let state of orderStatus$ | async" [value]="state">
-                    {{state}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <button id="btn-view-details" (click)="changeStatus(order.orderStatus ==='Order Received' ? orderStatusBtn[0] :
+        orderStatusBtn[1], order)" mat-stroked-button color="primary"
+            [disabled]="order.orderStatus ==='Ready to serve'">Change
+            status to {{order.orderStatus ==='Order
+            Received' ? orderStatusBtn[0] :
+            orderStatusBtn[1] }}</button>
     </mat-expansion-panel>
 </mat-accordion>

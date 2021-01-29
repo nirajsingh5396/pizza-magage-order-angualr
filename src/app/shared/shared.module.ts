@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { NoDataComponent } from './components/no-data/no-data.component';
-import { UserFilterPipe } from './pipes/user-filter.pipe';
 import { MaterialModule } from './modules/material-module';
 import { UserProfileComponent } from './components/user-profile-menu-items/user-profile.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
@@ -16,7 +15,6 @@ import { ShortenPipe } from './pipes/shorten.pipe';
 @NgModule({
   declarations: [
     NoDataComponent,
-    UserFilterPipe,
     UserProfileComponent,
     ShortenPipe
   ],
@@ -36,7 +34,6 @@ import { ShortenPipe } from './pipes/shorten.pipe';
     RouterModule,
     NoDataComponent,
     UserProfileComponent,
-    UserFilterPipe,
     MaterialModule,
     ShortenPipe
   ],
