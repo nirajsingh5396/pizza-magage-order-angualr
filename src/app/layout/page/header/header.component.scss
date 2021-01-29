@@ -1,5 +1,5 @@
 .toolbar {
-    height: 60px;
+    height: 70px;
     margin: -8px;
     display: flex;
     align-items: center;
@@ -8,4 +8,9 @@
     font-weight: 600;
     justify-content: space-between;
     padding: 0 20px;
+  }
+
+  .main-content{
+    padding: 0 20px;
+    margin-top: 20px;
   }

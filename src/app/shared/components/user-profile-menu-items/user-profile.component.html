@@ -2,7 +2,7 @@
     <mat-icon>account_circle</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-    <button mat-menu-item *ngFor="let item of userProfileMenuItems$ | async">
+    <button mat-menu-item *ngFor="let item of userProfileMenuItems$ | async" routerLink="/layout/manage-orders">
         <mat-icon>{{item.icon}}</mat-icon>
         <span>{{item.name}}</span>
     </button>
