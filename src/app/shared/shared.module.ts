@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import { UserFilterPipe } from './pipes/user-filter.pipe';
 import { MaterialModule } from './modules/material-module';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileComponent } from './components/user-profile-menu-items/user-profile.component';
 
 
 
