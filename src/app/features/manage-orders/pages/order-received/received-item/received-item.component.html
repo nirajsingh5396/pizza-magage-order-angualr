@@ -1,0 +1,28 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Customer Name
+            </mat-panel-title>
+            <mat-panel-description>
+                2 Items
+            </mat-panel-description>
+            <mat-panel-description>
+                Bill Total: {{200*5}}
+            </mat-panel-description>
+            <mat-panel-description>
+                Order Received
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <button id="btn-view-details" mat-stroked-button color="primary">View Details</button>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Change Order Status</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let state of orderStatus$ | async" [value]="state">
+                    {{state}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-expansion-panel>
+</mat-accordion>
