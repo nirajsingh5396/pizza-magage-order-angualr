@@ -1,1 +1,4 @@
-<p>order-received works!</p>
+<app-received-item 
+*ngFor="let item of items"
+[orderStatus$]="orderStatus$"
+></app-received-item>
