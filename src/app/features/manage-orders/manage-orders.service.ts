@@ -30,6 +30,8 @@ export class ManageOrdersService {
     { id: 30, itemName: 'Tornado', noOfItems: 2, orderStatus: ORDERSTATUS.RECEIVED, price: 600, customerName: 'Ankit patel', deliveryAddress: 'Tartufo Pizza At Toit, Indiranagar' }
 
   ];
+
+  preparingOrders: IOrders[] = [];
   constructor() { }
 
   getOrderStatus(disCardStatus: string): Observable<string[]> {
@@ -39,5 +41,15 @@ export class ManageOrdersService {
 
   getReceivedOrders(): Observable<IOrders[]> {
     return of(this.orders)
+  }
+
+  getPreparingOrders(orderId: number): Observable<IOrders[]> {
+    const index = this.orders.findIndex((order) => order.id === orderId);
+    if (index < 0) {
+      return of(null)
+    }
+    this.preparingOrders.push(this.orders[index]);
+    this.orders.splice(index, 1);
+    return of(this.preparingOrders);
   }
 }
