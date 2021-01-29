@@ -54,4 +54,15 @@ export class ManageOrdersService {
     order.orderStatus = reqOrder.orderStatus;
     return of({ status: 'success', message: `Status has been changed to${status}` })
   }
+
+  getOrderById(id: number): Observable<IOrders> {
+    const order = this.orders.find((order) => order.id === id);
+    if (!order) {
+      return of(null);
+    }
+
+    return of(order);
+
+  }
+
 }
