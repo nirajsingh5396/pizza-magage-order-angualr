@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ManageOrdersService } from '../../manage-orders.service';
-import { IOrders } from '../../models/orders.model';
+import { IOrders, ORDERSTATUS } from '../../models/orders.model';
 
 @Component({
   selector: 'app-order-received',
@@ -18,15 +18,15 @@ export class OrderReceivedComponent implements OnInit {
 
   ngOnInit() {
     this.getAllreceivedOrder();
-    this.getOrderStatus();
+    this.getOrderStatus(ORDERSTATUS.RECEIVED);
   }
 
   getAllreceivedOrder() {
     this.orders$ = this.manageOrderService.getReceivedOrders();
   }
 
-  getOrderStatus() {
-    this.orderStatus$ = this.manageOrderService.getOrderStatus();
+  getOrderStatus(disCardStatus: string) {
+    this.orderStatus$ = this.manageOrderService.getOrderStatus(disCardStatus);
   }
 
 }

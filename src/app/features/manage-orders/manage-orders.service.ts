@@ -32,9 +32,9 @@ export class ManageOrdersService {
   ];
   constructor() { }
 
-  getOrderStatus(): Observable<string[]> {
+  getOrderStatus(disCardStatus: string): Observable<string[]> {
     const status = ['Order Received', 'Preparing', 'Ready to serve'];
-    return of(status);
+    return of(status.filter(x => x !== disCardStatus));
   }
 
   getReceivedOrders(): Observable<IOrders[]> {
