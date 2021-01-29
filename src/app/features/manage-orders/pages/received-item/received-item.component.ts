@@ -2,7 +2,7 @@ import { SelectionChange } from '@angular/cdk/collections';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSelectChange } from '@angular/material';
 import { Observable } from 'rxjs';
-import { IOrders } from '../../../models/orders.model';
+import { IOrders } from '../../models/orders.model';
 
 @Component({
   selector: 'app-received-item',

@@ -4,7 +4,7 @@ import { MangeOrdersComponent } from './mange-orders.component';
 import { ManageOrdersRoutingModule } from './manage-order-routing.module';
 import { OrderReceivedComponent } from './pages/order-received/order-received.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ReceivedItemComponent } from './pages/order-received/received-item/received-item.component';
+import { ReceivedItemComponent } from './pages/received-item/received-item.component';
 
 
 
