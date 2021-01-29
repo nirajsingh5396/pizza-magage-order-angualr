@@ -19,18 +19,20 @@ export class OrderReceivedComponent implements OnInit {
 
   ngOnInit() {
     this.getAllreceivedOrder();
-    this.getOrderStatus();
+    this.getButtonStatus();
   }
 
   getAllreceivedOrder() {
     this.manageOrderService.getOrders().subscribe(orders => {
       this.orders = orders;
-    });
+    }, (err) => alert('Something went wrong'));
   }
 
-  getOrderStatus() {
-  this.manageOrderService.getOrderStatus().
-  subscribe((status)=>{this.orderStatusBtn = status})
+  getButtonStatus() {
+    this.manageOrderService.getButtonStatus().
+      subscribe((status) => { this.orderStatusBtn = status },
+        (err) => alert('Something went wrong')
+      );
   }
 
   changeStatus(order: IOrders) {
@@ -39,7 +41,8 @@ export class OrderReceivedComponent implements OnInit {
         if (res.status === 'success') {
           this.getAllreceivedOrder();
         }
-      }
+      },
+      (err) => alert('Something went wrong')
     );
   }
 
