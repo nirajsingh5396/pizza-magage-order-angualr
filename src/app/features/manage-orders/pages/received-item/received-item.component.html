@@ -14,7 +14,8 @@
                 {{order.orderStatus}}
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <button id="btn-view-details" mat-stroked-button color="primary">View Details</button>
+        <button id="btn-view-details" mat-stroked-button color="primary"
+            [routerLink]="['/layout/manage-orders/', order.id]">View Details</button>
         <br>
         <button id="btn-view-details" (click)="changeStatus(order.orderStatus ==='Order Received' ? orderStatusBtn[0] :
         orderStatusBtn[1], order)" mat-stroked-button color="primary"
