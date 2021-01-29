@@ -9,6 +9,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 import { UserFilterPipe } from './pipes/user-filter.pipe';
 import { MaterialModule } from './modules/material-module';
 import { UserProfileComponent } from './components/user-profile-menu-items/user-profile.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
 
 
 
@@ -16,7 +17,9 @@ import { UserProfileComponent } from './components/user-profile-menu-items/user-
   declarations: [
     NoDataComponent,
     UserFilterPipe,
-    UserProfileComponent],
+    UserProfileComponent,
+    ShortenPipe
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -34,7 +37,8 @@ import { UserProfileComponent } from './components/user-profile-menu-items/user-
     NoDataComponent,
     UserProfileComponent,
     UserFilterPipe,
-    MaterialModule
+    MaterialModule,
+    ShortenPipe
   ],
   providers: []
 })

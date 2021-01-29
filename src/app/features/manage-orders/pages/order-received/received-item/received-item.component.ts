@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IOrders } from '../../../models/orders.model';
 
 @Component({
   selector: 'app-received-item',
@@ -9,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ReceivedItemComponent implements OnInit {
 
   @Input() orderStatus$: Observable<string[]>;
+  @Input() order: IOrders[]
 
   constructor() { }
 

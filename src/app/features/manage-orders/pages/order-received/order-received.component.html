@@ -1,4 +1,2 @@
-<app-received-item 
-*ngFor="let item of items"
-[orderStatus$]="orderStatus$"
-></app-received-item>
+<app-received-item *ngFor="let order of orders$ | async" [order]="order" [orderStatus$]="orderStatus$">
+</app-received-item>
