@@ -15,17 +15,15 @@
                 <span class="order-customerName">Bill Total: ₹{{order.price* order.noOfItems}}</span>
             </div>
             <div class="order-list-detail">
-                <button pButton pRipple type="button" pTooltip="View Details"
-                    [routerLink]="['/layout/manage-orders/', order.id]" icon="pi pi-info"
-                    class="p-button-rounded"></button>
+                <i class="pi pi-info-circle info-icon" pTooltip="View Details" [routerLink]="['/layout/manage-orders/', order.id]"></i>
             </div>
             <div class="order-list-action">
                 <h6 class="p-mb-2">₹{{order.price}}</h6>
-                <span [ngClass]="{
+                <span pTooltip={{order.orderStatus}} [ngClass]="{
                     'Order-Received': order.orderStatus==='Order Received',
                     'preparing': order.orderStatus==='Preparing',
                     'ready-to-serve': order.orderStatus==='Ready to serve'
-                }">{{order.orderStatus | uppercase}}</span>
+                }">{{order.orderStatus | shorten: 6 | uppercase}}</span>
             </div>
         </div>
     </ng-template>
