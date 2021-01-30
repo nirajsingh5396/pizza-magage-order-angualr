@@ -1,10 +1,3 @@
-<!-- <app-received-item 
-*ngFor="let order of orders" 
-[order]="order" 
-[orderStatusBtn]="orderStatusBtn"
-(statusChangedEvent)="changeStatus($event)"
->
-</app-received-item> -->
 
 <p-orderList [value]="orders" [listStyle]="{'height':'auto'}" header="List of Order Received" controlsPosition="right"
     filterBy="itemName,customerName,price,orderStatus,noOfItems" filterPlaceholder="Filter orders" dragdrop="true">

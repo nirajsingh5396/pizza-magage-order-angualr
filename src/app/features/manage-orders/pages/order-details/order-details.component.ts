@@ -15,6 +15,7 @@ export class OrderDetailsComponent implements OnInit {
   order: IOrders = null;
   selectedIndex: number = 0;
   status: string[] = [];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private manageOrderService: ManageOrdersService,
@@ -26,8 +27,6 @@ export class OrderDetailsComponent implements OnInit {
     this.loadorderDetails(id);
   }
 
-
-
   loadorderDetails(id: number) {
     const order$ = this.manageOrderService.getOrderById(id);
     const status$ = this.manageOrderService.getTimelineStatus();
@@ -38,7 +37,6 @@ export class OrderDetailsComponent implements OnInit {
        * Finding selected index for showing current status of timeline in stepper
        */
       this.selectedIndex = this.status.findIndex(x => x === this.order.orderStatus);
-      console.log(this.selectedIndex);
     }, (err) => {
       this.notificationService.showNotification('Something went wrong', 'bottom', 'error')
     });

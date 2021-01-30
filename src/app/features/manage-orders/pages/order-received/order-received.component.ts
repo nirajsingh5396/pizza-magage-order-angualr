@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ManageOrdersService } from '../../manage-orders.service';
 import { IOrders, ORDERSTATUS } from '../../models/orders.model';
 
@@ -10,41 +11,23 @@ import { IOrders, ORDERSTATUS } from '../../models/orders.model';
 })
 export class OrderReceivedComponent implements OnInit {
 
-  orderStatusBtn: string[] = []
   orders: IOrders[] = [];
-  @Input() status: string;
 
-
-  constructor(private manageOrderService: ManageOrdersService) { }
+  constructor(
+    private manageOrderService: ManageOrdersService,
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit() {
     this.getAllreceivedOrder();
-    this.getButtonStatus();
   }
 
   getAllreceivedOrder() {
     this.manageOrderService.getOrders().subscribe(orders => {
       this.orders = orders;
-    }, (err) => alert('Something went wrong'));
+    }, (err) => { this.notificationService.showNotification('Something went wrong', 'bottom', 'error') });
   }
 
-  getButtonStatus() {
-    this.manageOrderService.getTimelineStatus().
-      subscribe((status) => { this.orderStatusBtn = status },
-        (err) => alert('Something went wrong')
-      );
-  }
-
-  changeStatus(order: IOrders) {
-    // this.manageOrderService.changeOrderStatus(order).subscribe(
-    //   (res) => {
-    //     if (res.status === 'success') {
-    //       this.getAllreceivedOrder();
-    //     }
-    //   },
-    //   (err) => alert('Something went wrong')
-    // );
-  }
 
 
 }
