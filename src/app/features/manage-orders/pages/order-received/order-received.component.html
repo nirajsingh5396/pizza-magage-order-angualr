@@ -1,7 +1,33 @@
-<app-received-item 
+<!-- <app-received-item 
 *ngFor="let order of orders" 
 [order]="order" 
 [orderStatusBtn]="orderStatusBtn"
 (statusChangedEvent)="changeStatus($event)"
 >
-</app-received-item>
+</app-received-item> -->
+
+<p-orderList [value]="orders" [listStyle]="{'height':'auto'}" header="List of Order Received"
+    filterBy="itemName,customerName,price,orderStatus " filterPlaceholder="Filter orders" dragdrop="true">
+    <ng-template let-product pTemplate="item">
+        <div class="image-container">
+            <img src="assets/{{product.image}}" [alt]="product.itemName"
+                class="product-image" />
+        </div>
+        <div class="order-item">
+            <div class="order-list-detail">
+                <h5 class="p-mb-2">{{product.itemName}}</h5>
+                <i class="pi pi-user order-customerName-icon"></i>
+                <span class="order-customerName">{{product.customerName}}</span>
+            </div>
+            <div class="order-list-detail">
+                <h5 class="p-mb-2">{{product.noOfItems}} Items</h5>
+                <span class="order-customerName">Bill Total: ₹{{product.price* product.noOfItems}}</span>
+            </div>
+            <div class="product-list-action">
+                <h6 class="p-mb-2">₹{{product.price}}</h6>
+                <span
+                    [class]="'product-badge status-' + product.orderStatus.toLowerCase()">{{product.orderStatus}}</span>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList>
