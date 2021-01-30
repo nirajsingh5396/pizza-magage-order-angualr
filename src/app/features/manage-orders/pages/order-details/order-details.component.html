@@ -37,7 +37,12 @@
                     <mat-card-subtitle>{{order.noOfItems}} Items </mat-card-subtitle>
                     <mat-card-subtitle>₹{{order.price}}</mat-card-subtitle>
                 </p>
-                <mat-card-title> {{order.orderStatus}} </mat-card-title>
+                <mat-card-title [ngClass]="{
+                    'Order-Received': order.orderStatus==='Order Received',
+                    'preparing': order.orderStatus==='Preparing',
+                    'ready-to-serve': order.orderStatus==='Ready to serve'
+                }">
+                    {{order.orderStatus | uppercase}} </mat-card-title>
             </mat-card-header>
             <img mat-card-image src="assets/{{order.image}}" [alt]="order.itemName" alt="Photo of a Shiba Inu">
             <mat-card-content>

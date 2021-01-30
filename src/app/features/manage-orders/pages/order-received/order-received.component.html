@@ -1,4 +1,3 @@
-
 <p-orderList [value]="orders" [listStyle]="{'height':'auto'}" header="List of Order Received" controlsPosition="right"
     filterBy="itemName,customerName,price,orderStatus,noOfItems" filterPlaceholder="Filter orders" dragdrop="true">
     <ng-template let-order pTemplate="item">
@@ -22,7 +21,11 @@
             </div>
             <div class="order-list-action">
                 <h6 class="p-mb-2">₹{{order.price}}</h6>
-                <span>{{order.orderStatus | uppercase}}</span>
+                <span [ngClass]="{
+                    'Order-Received': order.orderStatus==='Order Received',
+                    'preparing': order.orderStatus==='Preparing',
+                    'ready-to-serve': order.orderStatus==='Ready to serve'
+                }">{{order.orderStatus | uppercase}}</span>
             </div>
         </div>
     </ng-template>
