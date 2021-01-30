@@ -2,3 +2,32 @@
 @import '~primeicons/primeicons.css';
 @import '~primeng/resources/themes/nova-light/theme.css';
 @import '~primeng/resources/primeng.min.css';
+
+.green-snackbar {
+    background: #51a351;
+    color: #fff;
+  }
+
+
+.success{
+    background-color: #225792;
+    font-weight: 600;
+    color: #fff;
+  }
+  
+  .error{
+    background-color: #871518;
+    color: #fff;
+  }
+  
+  .warning{
+    background-color: #e76c27;
+  
+    color: #fff;
+  }
+  
+  .mat-simple-snackbar{
+    justify-content: center !important;
+    font-family: inherit;
+    font-weight: 500;
+  }

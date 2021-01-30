@@ -10,6 +10,7 @@ import { MaterialModule } from './modules/material-module';
 import { UserProfileComponent } from './components/user-profile-menu-items/user-profile.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { PrimeNgModule } from './modules/primeng.module';
+import { NotificationService } from './services/notification.service';
 
 
 
@@ -40,6 +41,6 @@ import { PrimeNgModule } from './modules/primeng.module';
     ShortenPipe,
     PrimeNgModule
   ],
-  providers: []
+  providers: [NotificationService]
 })
 export class SharedModule { }
