@@ -1,4 +1,4 @@
-<mat-accordion>
+<!-- <mat-accordion>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title matTooltip={{order.customerName}}>
@@ -22,4 +22,46 @@
         </mat-expansion-panel-header>
         <p> {{order.deliveryAddress}} </p>
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
+<h3>Order Details</h3>
+<hr>
+<div class="row">
+    <div>
+        <mat-card class="order-details">
+            <mat-card-header>
+                <mat-card-title>{{order.itemName}}</mat-card-title>
+                <mat-card-subtitle>{{order.customerName}}</mat-card-subtitle>
+                <hr>
+                <p>
+                    <mat-card-title>Bill Total:₹{{order.price* order.noOfItems}}</mat-card-title>
+                    <mat-card-subtitle>{{order.noOfItems}} Items </mat-card-subtitle>
+                    <mat-card-subtitle>₹{{order.price}}</mat-card-subtitle>
+                </p>
+                <mat-card-title> {{order.orderStatus}} </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="assets/{{order.image}}" [alt]="order.itemName" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>{{order.deliveryAddress}} </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-stroked-button color="primary" routerLink="/layout/manage-orders/order-received">Go to Order
+                    Received</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div>
+        <h3>Change Status here</h3>
+        <mat-vertical-stepper linear [selectedIndex]="selectedIndex" (selectionChange)="changeStatus($event, order)">
+            <mat-step *ngFor="let state of status">
+                <ng-template matStepLabel>{{state}}</ng-template>
+            </mat-step>
+
+        </mat-vertical-stepper>
+    </div>
+
+</div>
+
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

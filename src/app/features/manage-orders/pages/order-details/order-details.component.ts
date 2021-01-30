@@ -1,5 +1,8 @@
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ManageOrdersService } from '../../manage-orders.service';
 import { IOrders } from '../../models/orders.model';
 
@@ -10,19 +13,45 @@ import { IOrders } from '../../models/orders.model';
 })
 export class OrderDetailsComponent implements OnInit {
   order: IOrders = null;
+  selectedIndex: number = 0;
+  status: string[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,
-    private manageOrderService: ManageOrdersService
+    private manageOrderService: ManageOrdersService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    this.getOrderById(id);
+    this.loadorderDetails(id);
   }
 
-  getOrderById(id: number) {
-    this.manageOrderService.getOrderById(id)
-      .subscribe((order) => { this.order = order}, (err) => { alert('something went wrong') });
+
+
+  loadorderDetails(id: number) {
+    const order$ = this.manageOrderService.getOrderById(id);
+    const status$ = this.manageOrderService.getTimelineStatus();
+    forkJoin([order$, status$]).subscribe((res) => {
+      this.order = res[0];
+      this.status = res[1];
+      /**
+       * Finding selected index for showing current status of timeline in stepper
+       */
+      this.selectedIndex = this.status.findIndex(x => x === this.order.orderStatus);
+      console.log(this.selectedIndex);
+    }, (err) => {
+      this.notificationService.showNotification('Something went wrong', 'bottom', 'error')
+    });
+
+  }
+
+  changeStatus(timeLineEvent: StepperSelectionEvent, order: IOrders) {
+    this.manageOrderService.changeOrderStatus(order, this.status[timeLineEvent.selectedIndex])
+      .subscribe((res) => {
+        if (res.status === 'success') {
+          this.notificationService.showNotification(`${res.message}`, 'top', 'green-snackbar')
+        }
+      });
   }
 
 }

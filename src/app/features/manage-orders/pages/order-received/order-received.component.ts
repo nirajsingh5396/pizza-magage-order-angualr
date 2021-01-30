@@ -29,21 +29,21 @@ export class OrderReceivedComponent implements OnInit {
   }
 
   getButtonStatus() {
-    this.manageOrderService.getButtonStatus().
+    this.manageOrderService.getTimelineStatus().
       subscribe((status) => { this.orderStatusBtn = status },
         (err) => alert('Something went wrong')
       );
   }
 
   changeStatus(order: IOrders) {
-    this.manageOrderService.changeOrderStatus(order).subscribe(
-      (res) => {
-        if (res.status === 'success') {
-          this.getAllreceivedOrder();
-        }
-      },
-      (err) => alert('Something went wrong')
-    );
+    // this.manageOrderService.changeOrderStatus(order).subscribe(
+    //   (res) => {
+    //     if (res.status === 'success') {
+    //       this.getAllreceivedOrder();
+    //     }
+    //   },
+    //   (err) => alert('Something went wrong')
+    // );
   }
 
 
