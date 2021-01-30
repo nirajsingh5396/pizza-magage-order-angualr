@@ -4,8 +4,9 @@ export interface IOrders {
     deliveryAddress: string;
     customerName: string;
     itemName: string;
-    noOfItems: number
-    orderStatus: ORDERSTATUS | string
+    noOfItems: number;
+    image: string;
+    orderStatus: ORDERSTATUS | string;
 }
 
 export enum ORDERSTATUS {
