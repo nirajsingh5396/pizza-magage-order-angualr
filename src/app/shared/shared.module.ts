@@ -9,6 +9,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 import { MaterialModule } from './modules/material-module';
 import { UserProfileComponent } from './components/user-profile-menu-items/user-profile.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
+import { PrimeNgModule } from './modules/primeng.module';
 
 
 
@@ -24,7 +25,8 @@ import { ShortenPipe } from './pipes/shorten.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    PrimeNgModule
   ],
   exports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { ShortenPipe } from './pipes/shorten.pipe';
     NoDataComponent,
     UserProfileComponent,
     MaterialModule,
-    ShortenPipe
+    ShortenPipe,
+    PrimeNgModule
   ],
   providers: []
 })
