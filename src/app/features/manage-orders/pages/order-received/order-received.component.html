@@ -7,26 +7,24 @@
 </app-received-item> -->
 
 <p-orderList [value]="orders" [listStyle]="{'height':'auto'}" header="List of Order Received"
-    filterBy="itemName,customerName,price,orderStatus " filterPlaceholder="Filter orders" dragdrop="true">
-    <ng-template let-product pTemplate="item">
-        <div class="image-container">
-            <img src="assets/{{product.image}}" [alt]="product.itemName"
-                class="product-image" />
-        </div>
+    filterBy="itemName,customerName,price,orderStatus,noOfItems" filterPlaceholder="Filter orders" dragdrop="true">
+    <ng-template let-order pTemplate="item">
         <div class="order-item">
+            <div class="image-container">
+                <img src="assets/{{order.image}}" [alt]="order.itemName" class="product-image" />
+            </div>
             <div class="order-list-detail">
-                <h5 class="p-mb-2">{{product.itemName}}</h5>
+                <h5 class="p-mb-2">{{order.itemName}}</h5>
                 <i class="pi pi-user order-customerName-icon"></i>
-                <span class="order-customerName">{{product.customerName}}</span>
+                <span class="order-customerName">{{order.customerName}}</span>
             </div>
             <div class="order-list-detail">
-                <h5 class="p-mb-2">{{product.noOfItems}} Items</h5>
-                <span class="order-customerName">Bill Total: ₹{{product.price* product.noOfItems}}</span>
+                <h5 class="p-mb-2">{{order.noOfItems}} Items</h5>
+                <span class="order-customerName">Bill Total: ₹{{order.price* order.noOfItems}}</span>
             </div>
-            <div class="product-list-action">
-                <h6 class="p-mb-2">₹{{product.price}}</h6>
-                <span
-                    [class]="'product-badge status-' + product.orderStatus.toLowerCase()">{{product.orderStatus}}</span>
+            <div class="order-list-action">
+                <h6 class="p-mb-2">₹{{order.price}}</h6>
+                <span>{{order.orderStatus | uppercase}}</span>
             </div>
         </div>
     </ng-template>
