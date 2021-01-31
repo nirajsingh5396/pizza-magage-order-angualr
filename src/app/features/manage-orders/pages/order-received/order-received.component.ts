@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { ManageOrdersService } from '../../manage-orders.service';
+import { ManageOrdersService } from '../../../../shared/services/manage-orders.service';
 import { IOrders, ORDERSTATUS } from '../../models/orders.model';
 
 @Component({

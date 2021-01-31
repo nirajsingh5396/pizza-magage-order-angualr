@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IOrders, ORDERSTATUS } from './models/orders.model';
+import { IOrders, ORDERSTATUS } from '../../features/manage-orders/models/orders.model';
 
 @Injectable({
   providedIn: 'root'

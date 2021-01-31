@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { ManageOrdersService } from '../../manage-orders.service';
+import { ManageOrdersService } from '../../../../shared/services/manage-orders.service';
 import { IOrders } from '../../models/orders.model';
 
 @Component({
