@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ORDERSTATUS } from '../../models/orders.model';
 
 @Component({
   selector: 'app-order-reday-to-serve',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-reday-to-serve.component.scss']
 })
 export class OrderRedayToServeComponent implements OnInit {
-
+  header: string = 'List of all preparingorders';
+  status: string = ORDERSTATUS.READYTOSERVE;
   constructor() { }
 
   ngOnInit() {

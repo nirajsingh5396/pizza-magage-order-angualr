@@ -7,8 +7,8 @@ import { ORDERSTATUS } from '../../models/orders.model';
   styleUrls: ['./order-preparing.component.scss']
 })
 export class OrderPreparingComponent implements OnInit {
-  header: string = 'List of all preparingorders'
-  status: string = ORDERSTATUS.PREPARING
+  header: string = 'List of all preparingorders';
+  status: string = ORDERSTATUS.PREPARING;
   constructor() { }
 
   ngOnInit() {
