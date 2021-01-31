@@ -1,0 +1,13 @@
+
+<google-chart #chart 
+[title]="title" 
+[type]="type" 
+[data]="data" 
+[columnNames]="columnNames" 
+[options]="options"
+[width]="width" 
+[height]="height"
+#id
+(select)="getStatusData($event)"
+>
+</google-chart>
