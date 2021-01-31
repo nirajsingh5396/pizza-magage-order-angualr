@@ -7,7 +7,7 @@ import { ORDERSTATUS } from '../../models/orders.model';
   styleUrls: ['./all-orders.component.scss']
 })
 export class AllOrdersComponent implements OnInit {
-  header: string = 'List odf all orders'
+  header: string = 'List of all orders'
   status: string = 'all'
   constructor() { }
 
