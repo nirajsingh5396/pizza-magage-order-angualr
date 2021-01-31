@@ -43,9 +43,9 @@ export class ManageOrdersService {
   }
 
 
-  getOrders(): Observable<IOrders[]> {
-    console.log(this.orders)
-    return of(this.orders)
+  getOrders(status?: string): Observable<IOrders[]> {
+    const orders = !!status ? this.orders.filter(x => x.orderStatus === status) : this.orders
+    return of(orders);
   }
 
   changeOrderStatus(reqOrder: IOrders, statusToChange: string): Observable<any> {
