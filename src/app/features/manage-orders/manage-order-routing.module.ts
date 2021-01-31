@@ -5,6 +5,7 @@ import { AllOrdersComponent } from './pages/all-orders/all-orders.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { OrderPreparingComponent } from './pages/order-preparing/order-preparing.component';
 import { OrderReceivedComponent } from './pages/order-received/order-received.component';
+import { OrderRedayToServeComponent } from './pages/order-reday-to-serve/order-reday-to-serve.component';
 
 
 const routes: Routes = [
@@ -16,8 +17,7 @@ const routes: Routes = [
             { path: 'all-orders', component: AllOrdersComponent },
             { path: 'order-received', component: OrderReceivedComponent },
             { path: 'order-preparing', component: OrderPreparingComponent },
-            { path: 'order-received', component: OrderReceivedComponent },
-            { path: 'order-received', component: OrderReceivedComponent },
+            { path: 'order-ready-to-serve', component: OrderRedayToServeComponent },
             { path: 'order-details/:id', component: OrderDetailsComponent }
         ]
     },
