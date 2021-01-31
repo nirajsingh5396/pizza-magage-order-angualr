@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PIECHARTINFO } from 'src/app/shared/helpers/constant';
 import { ManageOrdersService } from 'src/app/shared/services/manage-orders.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
+import { ORDERSTATUS } from '../manage-orders/models/orders.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +20,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private manageOrderService: ManageOrdersService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,8 +36,14 @@ export class DashboardComponent implements OnInit {
       }, (err) => this.notificationService.showNotification('Something went wrong', 'bottom', 'error'));
   }
 
-  getStatusData(event) {
-    console.log(event);
+  getStatusData(event: any[]) {
+    if (this.data[event[0].row][0] === ORDERSTATUS.RECEIVED) {
+      this.router.navigate(['/layout/manage-orders/order-received']);
+    } else if (this.data[event[0].row][0] === ORDERSTATUS.PREPARING) {
+      this.router.navigate(['/layout/manage-orders/order-preparing']);
+    } else {
+      this.router.navigate(['/layout/manage-orders/order-ready-to-serve']);
+    }
   }
 
 }
