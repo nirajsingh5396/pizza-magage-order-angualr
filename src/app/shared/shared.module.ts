@@ -10,8 +10,8 @@ import { MaterialModule } from './modules/material-module';
 import { UserProfileComponent } from './components/user-profile-menu-items/user-profile.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { PrimeNgModule } from './modules/primeng.module';
+import { GoogleChartsModule } from 'angular-google-charts';
 import { NotificationService } from './services/notification.service';
-
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { NotificationService } from './services/notification.service';
     HttpClientModule,
     RouterModule,
     MaterialModule,
-    PrimeNgModule
+    PrimeNgModule,
+    GoogleChartsModule
   ],
   exports: [
     CommonModule,
@@ -39,7 +40,8 @@ import { NotificationService } from './services/notification.service';
     UserProfileComponent,
     MaterialModule,
     ShortenPipe,
-    PrimeNgModule
+    PrimeNgModule,
+    GoogleChartsModule
   ],
   providers: [NotificationService]
 })
