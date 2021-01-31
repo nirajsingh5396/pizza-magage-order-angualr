@@ -12,6 +12,8 @@ export class OrderReceivedComponent implements OnInit {
   @Input() header: string;
   @Input() status: string;
   orders: IOrders[] = [];
+  noData: boolean = true;
+  noDataTitle: string = 'No orders'
 
   constructor(
     private manageOrderService: ManageOrdersService,
@@ -27,7 +29,10 @@ export class OrderReceivedComponent implements OnInit {
 
   getAllreceivedOrder(status?: string) {
     this.manageOrderService.getOrders(status).subscribe(orders => {
-      this.orders = orders;
+      if (orders && orders.length > 0) {
+        this.noData = false;
+        this.orders = orders;
+      }
     }, (err) => { this.notificationService.showNotification('Something went wrong', 'bottom', 'error') });
   }
 

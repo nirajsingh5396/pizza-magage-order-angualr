@@ -1,30 +1,39 @@
-<p-orderList [value]="orders" [listStyle]="{'height':'auto'}" [header]="!!header ? header : 'List of Order Received'" controlsPosition="right"
-    filterBy="itemName,customerName,price,orderStatus,noOfItems" filterPlaceholder="Filter orders" dragdrop="true">
-    <ng-template let-order pTemplate="item">
-        <div class="order-item">
-            <div class="image-container">
-                <img src="assets/{{order.image}}" [alt]="order.itemName" class="product-image" />
-            </div>
-            <div class="order-list-detail">
-                <h5 class="p-mb-2">{{order.itemName}}</h5>
-                <i class="pi pi-user order-customerName-icon"></i>
-                <span class="order-customerName">{{order.customerName}}</span>
-            </div>
-            <div class="order-list-detail">
-                <h5 class="p-mb-2">{{order.noOfItems}} Items</h5>
-                <span class="order-customerName">Bill Total: ₹{{order.price* order.noOfItems}}</span>
-            </div>
-            <div class="order-list-detail">
-                <i class="pi pi-info-circle info-icon" pTooltip="View Details" [routerLink]="['/layout/manage-orders/order-details/', order.id]"></i>
-            </div>
-            <div class="order-list-action">
-                <h6 class="p-mb-2">₹{{order.price}}</h6>
-                <span pTooltip={{order.orderStatus}} [ngClass]="{
+<div *ngIf="noData ; else data">
+<app-no-data [title]="noDataTitle"></app-no-data>
+</div>
+
+<ng-template #data>
+
+    <p-orderList [value]="orders" [listStyle]="{'height':'auto'}"
+        [header]="!!header ? header : 'List of Order Received'" controlsPosition="right"
+        filterBy="itemName,customerName,price,orderStatus,noOfItems" filterPlaceholder="Filter orders" dragdrop="true">
+        <ng-template let-order pTemplate="item">
+            <div class="order-item">
+                <div class="image-container">
+                    <img src="assets/{{order.image}}" [alt]="order.itemName" class="product-image" />
+                </div>
+                <div class="order-list-detail">
+                    <h5 class="p-mb-2">{{order.itemName}}</h5>
+                    <i class="pi pi-user order-customerName-icon"></i>
+                    <span class="order-customerName">{{order.customerName}}</span>
+                </div>
+                <div class="order-list-detail">
+                    <h5 class="p-mb-2">{{order.noOfItems}} Items</h5>
+                    <span class="order-customerName">Bill Total: ₹{{order.price* order.noOfItems}}</span>
+                </div>
+                <div class="order-list-detail">
+                    <i class="pi pi-info-circle info-icon" pTooltip="View Details"
+                        [routerLink]="['/layout/manage-orders/order-details/', order.id]"></i>
+                </div>
+                <div class="order-list-action">
+                    <h6 class="p-mb-2">₹{{order.price}}</h6>
+                    <span pTooltip={{order.orderStatus}} [ngClass]="{
                     'Order-Received': order.orderStatus==='Order Received',
                     'preparing': order.orderStatus==='Preparing',
                     'ready-to-serve': order.orderStatus==='Ready to serve'
                 }">{{order.orderStatus | shorten: 6 | uppercase}}</span>
+                </div>
             </div>
-        </div>
-    </ng-template>
-</p-orderList>
+        </ng-template>
+    </p-orderList>
+</ng-template>
