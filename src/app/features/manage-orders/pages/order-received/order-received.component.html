@@ -1,4 +1,4 @@
-<p-orderList [value]="orders" [listStyle]="{'height':'auto'}" header="List of Order Received" controlsPosition="right"
+<p-orderList [value]="orders" [listStyle]="{'height':'auto'}" [header]="!!header ? header : 'List of Order Received'" controlsPosition="right"
     filterBy="itemName,customerName,price,orderStatus,noOfItems" filterPlaceholder="Filter orders" dragdrop="true">
     <ng-template let-order pTemplate="item">
         <div class="order-item">
@@ -15,7 +15,7 @@
                 <span class="order-customerName">Bill Total: ₹{{order.price* order.noOfItems}}</span>
             </div>
             <div class="order-list-detail">
-                <i class="pi pi-info-circle info-icon" pTooltip="View Details" [routerLink]="['/layout/manage-orders/', order.id]"></i>
+                <i class="pi pi-info-circle info-icon" pTooltip="View Details" [routerLink]="['/layout/manage-orders/order-details/', order.id]"></i>
             </div>
             <div class="order-list-action">
                 <h6 class="p-mb-2">₹{{order.price}}</h6>
