@@ -6,11 +6,12 @@ import { OrderReceivedComponent } from './pages/order-received/order-received.co
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 import { AllOrdersComponent } from './pages/all-orders/all-orders.component';
+import { OrderPreparingComponent } from './pages/order-preparing/order-preparing.component';
 
 
 
 @NgModule({
-  declarations: [MangeOrdersComponent, OrderReceivedComponent, OrderDetailsComponent, AllOrdersComponent],
+  declarations: [MangeOrdersComponent, OrderReceivedComponent, OrderDetailsComponent, AllOrdersComponent, OrderPreparingComponent],
   imports: [
     CommonModule,
     ManageOrdersRoutingModule,
